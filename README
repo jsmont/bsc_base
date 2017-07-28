@@ -1,0 +1,31 @@
+README
+======
+
+This is a small example of an MPI+OmpSs application running optionally with DLB.
+
+Compilation
+-----------
+Check the Makefile paths are correct and run `make`. The Makefile assumes you have
+Mercurium drivers in your PATH.
+
+Execution
+---------
+Ideally, executing 'run.sh' script should be enough. Though, depending on your MPI
+implementation, you may need to add or modify some specific mpirun flags for either
+set the LD_PRELOAD variable or to correctly set the binding for all processes. Note
+that DLB will fail if some process share CPU ownership with another one.
+
+You can change the values of DLB and TRACE variables to modify the script behaviour.
+By default both options are set to 0, which means that the example program will run
+without DLB nor tracing capabilities. Setting DLB to 1 should enable DLB to perform
+some basic balancing techniques. And setting TRACE to 1 will enable the tracing
+through the EXTRAE tracing library. The TRACE options assumes that you have EXTRAE
+correctly installed, and your environment variable EXTRAE_HOME points to that path.
+This option will generate a tracefile.prv which can be opened using the PARAVER
+application.
+
+References
+----------
+If you don't know about EXTRAE and PARAVER and want to test the tracing capabilities
+of the example program you can download the sources and pre-built binaries at:
+* https://tools.bsc.es/downloads
